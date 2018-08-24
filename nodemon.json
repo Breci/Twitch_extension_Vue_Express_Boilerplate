@@ -1,0 +1,4 @@
+{
+  "verbose": true,
+  "ignore": [".dist/*", "dist/*", "frontend/*", "certs/*", "generator" ]
+}

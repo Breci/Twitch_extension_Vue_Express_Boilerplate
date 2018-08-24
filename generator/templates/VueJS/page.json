@@ -1,0 +1,6 @@
+{
+  "name" : "panel",
+  "entryPoint" : "index.js",
+  "type" : "VUE",
+  "template" : null
+}
