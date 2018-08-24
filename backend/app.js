@@ -51,7 +51,7 @@ app.use((req, res, next) => {
 });
 
 //With AWS lambda we do not need to listen since the aws library handle it
-if (true || !config.api.useAWSLambda) {
+if (!config.api.useAWSLambda) {
 
     try {
 
