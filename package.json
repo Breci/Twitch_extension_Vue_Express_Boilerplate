@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.vue frontend",
     "lint:fix": "eslint --ext .js,.vue frontend --fix",
     "dev": "webpack-dev-server --config build/webpack.config.dev.js",
-    "page": "node generator/index.js"
+    "generator": "node generator/index.js"
   },
   "description": "Provides a simple starting point to create and locally develop your Twitch extension.",
   "license": "Apache-2.0",

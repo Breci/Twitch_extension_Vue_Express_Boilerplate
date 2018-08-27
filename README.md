@@ -18,7 +18,7 @@ cd certs
 
 ## To add a new page to your frontend.
 ```bash
-npm run page
+npm run generator
 ```
 
 ## To start the Extensions Boilerplate service

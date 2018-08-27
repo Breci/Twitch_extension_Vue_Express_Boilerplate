@@ -9,7 +9,7 @@ For example, the folder "panel" will generate the page "panel.html"
 
 ## To add a new page to your frontend.
 ```bash
-npm run page
+npm run generator
 ```
 
 ## Further documentation
