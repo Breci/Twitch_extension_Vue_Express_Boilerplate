@@ -7,8 +7,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 
-const environment = process.env.NODE_ENV || 'dev';
-const config = require(`./config/config.${environment}.js`);
+const config = require(`./config/config`);
 
 const AUTH_REGEX = /^Bearer (.+)$/;
 const DEFAULT_LOCAL_STATIC_FOLDER_PATH = path.join(__dirname, '..', '/.dist/');
