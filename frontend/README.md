@@ -13,14 +13,14 @@ npm run generator
 ```
 
 ## Frontend config
-| Element  | Description |
-| ------------- | ------------- |
-| ebs | EBS config |
+| Element  | Description | Default value|
+| ------------- | ------------- | ------------- |
+| ebs | EBS config | |
 
 ## EBS config
-| Element  | Description |
-| ------------- | ------------- |
-| url | URL to your EBS API.  "" by default  |
+| Element  | Description | Default value|
+| ------------- | ------------- | ------------- |
+| url | URL to your EBS API  | "" |
 
 ## Further documentation
 
