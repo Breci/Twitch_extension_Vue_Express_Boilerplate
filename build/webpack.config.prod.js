@@ -15,7 +15,8 @@ function resolve(dir) {
 }
 
 var config = {
-    mode: 'development',
+    mode: 'production',
+    devtool:false,
     context: path.resolve(__dirname,'..'),
     output: {
         path: path.resolve(__dirname,'..','dist/frontend/'),
