@@ -1,6 +1,50 @@
 const env = process.env.NODE_ENV ||"dev";
 const config = require('./config.'+ env +'.js');
 
-config.env = env;
+const DEFAULT_API_PORT = 8080;
 
+config.env = env;
+if (!config.api){
+    config.api ={};
+}
+if (!config.api.useAWSLambda){
+    if(!config.api.port){
+        config.api.port = DEFAULT_API_PORT
+    }
+    if(!config.api.static){
+        config.api.ssl = {
+            host : true,
+            path : path.join(__dirname, '../..', '/.dist/'),
+        }
+    }
+    if(!config.api.static.path){
+        config.api.static.path = path.join(__dirname, '../..', '/.dist/')
+    }
+    if(!config.api.ssl){
+        config.api.ssl = {
+            certPath:path.join(__dirname, '../../', '/certs/testing.crt'),
+            keyPath:path.join(__dirname, '../../', '/certs/testing.key')
+        }
+    }
+    if(!config.api.ssl.certPath){
+        config.api.ssl.certPath = path.join(__dirname, '../../', '/certs/testing.crt')
+    }
+    if(!config.api.ssl.keyPath){
+        config.api.ssl.keyPath = path.join(__dirname, '../../', '/certs/testing.key')
+    }
+}
+
+if (!config.extension){
+    config.extension ={
+        secret:"",
+        clientId:""
+    };
+}
+
+if (!config.extension.secret){
+    config.extension.secret = process.env.EXTENSION_SECRET;
+}
+if (!config.extension.clientId){
+    config.extension.secret = process.env.EXTENSION_CLIENT_ID;
+}
 module.exports = config;
