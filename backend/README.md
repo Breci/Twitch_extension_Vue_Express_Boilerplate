@@ -15,7 +15,7 @@ This folder contains the files to be use as your extension backend.
 | port | port for express server | 8080 |
 | secure | if true add layers of security to the server  | false |
 | allowHttp | if you allow http listening  | false |
-| useAWSLambda | if you use AWS lambda. If true, your app will not listen using express but with the aws-serless-express and previous configs will not be used  | false |
+| useAWSLambda | if you use AWS lambda. If true, your app will not listen using express but with the aws-serverless-express and previous configs will not be used  | false |
 | static | static files generated from webpack dynamically  |  |
 | ssl |ssl configuration  |  |
 
