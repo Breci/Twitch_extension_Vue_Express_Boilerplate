@@ -12,6 +12,16 @@ For example, the folder "panel" will generate the page "panel.html"
 npm run generator
 ```
 
+## Frontend config
+| Element  | Description |
+| ------------- | ------------- |
+| ebs | EBS config |
+
+## EBS config
+| Element  | Description |
+| ------------- | ------------- |
+| url | URL to your EBS API.  "" by default  |
+
 ## Further documentation
 
 Please consult the [Twitch Extensions documentation on the Twitch developer site](https://dev.twitch.tv/docs/extensions)
