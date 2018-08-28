@@ -16,6 +16,7 @@ npm run generator
 | Element  | Description | Default value|
 | ------------- | ------------- | ------------- |
 | ebs | EBS config | |
+| env | NODE_ENV value | 'dev' |
 
 ## EBS config
 | Element  | Description | Default value|
