@@ -12,11 +12,13 @@ export default {
     return {
         message :"Hello world",
         jwt : null,
+        config : null
     }
   },
   methods: {
-      init: function (auth) {
+      init: function (auth,config) {
           this.jwt = auth;
+          this.config = config;
       },
   }
 }
