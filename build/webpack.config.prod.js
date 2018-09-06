@@ -45,6 +45,10 @@ var config = {
                     MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader'
             }
         ]
     },
