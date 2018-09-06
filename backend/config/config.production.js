@@ -1,7 +1,11 @@
 module.exports = {
     server:{
-        port : 443,
-        useAWSLambda: false //if set to true, will disable the app listening and let aws lambda do it.
+        useAWSLambda: true, //if set to true, will disable the app listening and let aws lambda do it.
+        secure: true
+    },
+    extension: {
+        secret: process.env.EXTENSION_SECRET ,
+        clientId: process.env.CLIENT_ID
     },
 
 }

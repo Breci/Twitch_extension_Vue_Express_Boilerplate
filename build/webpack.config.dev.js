@@ -73,7 +73,10 @@ var config = {
         new MiniCssExtractPlugin({
             filename: "css/[name].css",
         }),
-        new webpack.HotModuleReplacementPlugin({ quiet: true })
+        new webpack.HotModuleReplacementPlugin({ quiet: true }),
+        new webpack.DefinePlugin({
+            CONFIG: JSON.stringify(require("../frontend/config/config")),
+        })
     ]
 
 };

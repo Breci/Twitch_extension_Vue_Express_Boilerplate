@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 const WebpackShellPlugin = require('webpack-shell-plugin');
+const webpack = require("webpack");
 const path = require('path');
 
 var fs = require('fs');
@@ -81,7 +82,10 @@ var config = {
         new MinifyPlugin({}, {
             test:/\.js($|\?)/
         }),
-        new WebpackShellPlugin({onBuildEnd:['npm --prefix ./dist/backend install --production ./dist/backend']})
+        new WebpackShellPlugin({onBuildEnd:['npm --prefix ./dist/backend install --production ./dist/backend']}),
+        new webpack.DefinePlugin({
+            CONFIG: JSON.stringify(require("../frontend/config/config")),
+        })
     ]
 
 };

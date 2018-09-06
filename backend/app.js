@@ -6,6 +6,7 @@ const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const awsServerlessExpress = require('aws-serverless-express');
 
 const config = require(`./config/config`);
 
@@ -80,7 +81,8 @@ if (!config.api.useAWSLambda) {
 
 }
 else if (config.api.useAWSLambda) {
-    //TODO SET AWS
+    const server = awsServerlessExpress.createServer(app);
+    exports.handler = (event, context) => awsServerlessExpress.proxy(server, event, context);
 }
 
 

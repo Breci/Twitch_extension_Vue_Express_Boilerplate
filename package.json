@@ -1,6 +1,7 @@
 {
   "author": "Brice \"Breci\" Culas",
   "dependencies": {
+    "aws-serverless-express": "^3.3.5",
     "body-parser": "^1.18.3",
     "express": "^4.15.4",
     "helmet": "^3.13.0",
