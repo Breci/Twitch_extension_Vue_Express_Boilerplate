@@ -34,6 +34,7 @@
     "jest-serializer-vue": "^2.0.2",
     "mini-css-extract-plugin": "^0.4.1",
     "nodemon": "^1.18.3",
+    "url-loader": "^1.1.1",
     "vue-loader": "^15.4.0",
     "vue-resource": "^1.5.1",
     "vue-style-loader": "^4.1.2",
