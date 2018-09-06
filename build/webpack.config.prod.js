@@ -29,7 +29,8 @@ var config = {
                 use: 'vue-loader'
             }, {
                 test: /\.js$/,
-                use: 'babel-loader'
+                use: 'babel-loader',
+                include: [resolve('frontend')]
             }, {
                 test: /\.styl(us)?$/,
                 use: ['vue-style-loader', 'css-loader', 'stylus-loader']
