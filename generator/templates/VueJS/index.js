@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import VueRessource from 'vue-resource'
 import App from './components/App.vue'
-import config from '../../config/config'
 
 Vue.config.productionTip = false;
 Vue.use(VueRessource);
@@ -18,7 +17,7 @@ if (window.Twitch.ext) {
     window.Twitch.ext.onAuthorized((auth) => {
         var app = vue.$children[0];
         Vue.http.headers.common['Authorization'] = `Bearer ${auth.token}`
-        app.init(auth,config);
+        app.init(auth,CONFIG);
     });
 
 
