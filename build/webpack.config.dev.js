@@ -75,7 +75,7 @@ var config = {
         }),
         new webpack.HotModuleReplacementPlugin({ quiet: true }),
         new webpack.DefinePlugin({
-            CONFIG: JSON.stringify(require("../frontend/config/config")),
+            CONFIG: JSON.stringify(require("../frontend/config/config.development")),
         })
     ]
 

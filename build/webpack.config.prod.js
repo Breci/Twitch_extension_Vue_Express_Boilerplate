@@ -84,7 +84,7 @@ var config = {
         }),
         new WebpackShellPlugin({onBuildEnd:['npm --prefix ./dist/backend install --production ./dist/backend']}),
         new webpack.DefinePlugin({
-            CONFIG: JSON.stringify(require("../frontend/config/config")),
+            CONFIG: JSON.stringify(require("../frontend/config/config.production")),
         })
     ]
 
