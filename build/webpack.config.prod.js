@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const webpack = require("webpack");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 
 var fs = require('fs');
@@ -17,7 +18,40 @@ function resolve(dir) {
 
 var config = {
     mode: 'production',
-    devtool:false,
+    devtool: false,
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' pour webpack 1
+        }
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    warnings: false,
+                    parse: {},
+                    compress: {},
+                    mangle: false, // Note `mangle.properties` is `false` by default.
+                    output: null,
+                    toplevel: false,
+                    nameCache: null,
+                    ie8: false,
+                    keep_fnames: false,
+                }
+            })
+        ],
+        splitChunks: {
+            cacheGroups: {
+                'vendor': {
+                    name: 'vendor',
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'initial',
+                    priority: 1
+                },
+            }
+        }
+    },
     context: path.resolve(__dirname,'..'),
     output: {
         path: path.resolve(__dirname,'..','dist/frontend/'),
@@ -45,7 +79,15 @@ var config = {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader'
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [require('autoprefixer')({
+                                'browsers': ['> 1%', 'last 2 versions']
+                            })],
+                        }
+                    },
                 ]
             },
             {
@@ -78,9 +120,6 @@ var config = {
         }),
         new MiniCssExtractPlugin({
             filename: "css/[name].css",
-        }),
-        new MinifyPlugin({}, {
-            test:/\.js($|\?)/
         }),
         new WebpackShellPlugin({onBuildEnd:['npm --prefix ./dist/backend install --production ./dist/backend']}),
         new webpack.DefinePlugin({
