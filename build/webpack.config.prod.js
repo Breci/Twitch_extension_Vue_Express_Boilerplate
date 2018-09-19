@@ -145,7 +145,7 @@ function addHTMLPlugins(){
                     config.plugins.push(new HtmlWebpackPlugin({
                         filename: `${page.name}.html`,
                         template: page.template|| './frontend/templates/default.html',
-                        chunks: [page.name],
+                        chunks: [page.name,'vendor'],
                         inject: true
                     }))
                     entry[page.name] = `./frontend/pages/${page.name}/${page.entryPoint}`
