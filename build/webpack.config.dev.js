@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require("webpack");
 const path = require('path');
 
@@ -18,6 +19,34 @@ var config = {
     watch: true,
     watchOptions: {
         ignored: [/node_modules/,'/backend/','/build/','/certs/','/.dist/','/dist/',"/generator/"]
+    },
+    optimization: {
+        minimize: false,
+        minimizer: [
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    warnings: false,
+                    parse: {},
+                    compress: {},
+                    mangle: false, // Note `mangle.properties` is `false` by default.
+                    output: null,
+                    toplevel: false,
+                    nameCache: null,
+                    ie8: false,
+                    keep_fnames: false,
+                }
+            })
+        ],
+        splitChunks: {
+            cacheGroups: {
+                'vendor': {
+                    name: 'vendor',
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'initial',
+                    priority: 1
+                },
+            }
+        }
     },
     context: path.resolve(__dirname,'..'),
     output: {
@@ -97,7 +126,7 @@ function addHTMLPlugins(){
                     config.plugins.push(new HtmlWebpackPlugin({
                         filename: `${page.name}.html`,
                         template: page.template|| './frontend/templates/default.html',
-                        chunks: [page.name],
+                        chunks: [page.name,'vendor'],
                         inject: true
                     }))
                     entry[page.name] = `./frontend/pages/${page.name}/${page.entryPoint}`
