@@ -31,7 +31,9 @@ var config = {
                 uglifyOptions: {
                     warnings: false,
                     parse: {},
-                    compress: {},
+                    compress: {
+                        drop_console:true
+                    },
                     mangle: false, // Note `mangle.properties` is `false` by default.
                     output: null,
                     toplevel: false,
