@@ -3,13 +3,21 @@ const chalk = require('chalk')
 
 const webpackConfig = require('./webpack.config.prod.js')
 
+const ARGS = process.argv.slice(2);
+if (ARGS[0]){
+    process.env.NODE_ENV = ARGS[0];
+}
+else{
+    process.env.NODE_ENV = 'production';
+}
+
 webpack(webpackConfig, (err, stats) => {
     if (err) throw err
     console.log(stats.toString({
         colors: true,
         modules: false,
         children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
-        chunks: false,
+        chunks: true,
         chunkModules: false
     }) + '\n\n')
 

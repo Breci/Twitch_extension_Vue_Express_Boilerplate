@@ -72,11 +72,12 @@ var config = {
                 test: /\.styl(us)?$/,
                 use: ['vue-style-loader', 'css-loader', 'stylus-loader']
             },
-            /*{
+            {
                 test: /\.(js|vue)$/,
                 use: 'eslint-loader',
-                enforce: 'pre'
-            },*/
+                enforce: 'pre',
+                include: [resolve('frontend')]
+            },
             {
                 test: /\.css$/,
                 use: [
