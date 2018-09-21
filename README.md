@@ -26,9 +26,17 @@ npm run generator
 docker-compose up --build
 ```
 
-## To build your extension for testing or production
+## To build your extension for or production
+By default the target is production.
 ```bash
 npm run build
+npm run build production
+```
+
+## To build your extension for testing
+[env] is the targeted environment 
+```bash
+npm run build [env]
 ```
 
 # Generated Files
