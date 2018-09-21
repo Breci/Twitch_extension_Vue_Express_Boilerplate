@@ -86,4 +86,7 @@ else if (config.api.useAWSLambda) {
 }
 
 
-module.exports = app;
+module.exports = {
+    app:app,
+    handler:handler
+};
