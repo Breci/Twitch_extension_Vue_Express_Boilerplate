@@ -48,6 +48,8 @@ You can send these files to your own server. If you are using AWS lambda option,
 ## Frontend
 Compress these files as a .zip file and upload it to your Twitch extension.
 
+## Credit
+Based on [Twitch Extension Boilerplate](https://github.com/twitchdev/extensions-samples/tree/master/boilerplate)
 ## Further documentation
 
 Please consult the [Twitch Extensions documentation on the Twitch developer site](https://dev.twitch.tv/docs/extensions)
