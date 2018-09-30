@@ -94,7 +94,6 @@ var config = {
             root: path.join(__dirname, '..')
         }),
 
-        new webpack.HotModuleReplacementPlugin(),
         new VueLoaderPlugin(),
         new CopyWebpackPlugin([{
             from: resolve('frontend/assets/'),
