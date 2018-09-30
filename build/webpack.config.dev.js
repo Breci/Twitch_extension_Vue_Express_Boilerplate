@@ -20,29 +20,35 @@ var config = {
     watchOptions: {
         ignored: [/node_modules/,'/backend/','/build/','/certs/','/.dist/','/dist/',"/generator/"]
     },
+    devServer: {
+        port: 8080,
+        host: '0.0.0.0',
+        index: '',
+        hot: true,
+        watchOptions: {
+            poll: true
+        },
+        https: {
+            key: fs.readFileSync(path.join(__dirname,'..','certs/testing.key')),
+            cert: fs.readFileSync(path.join(__dirname,'..','certs/testing.crt')),
+        },
+        proxy: {
+            '/api': {
+                target: 'https://localhost:8081',
+                secure: false,
+                pathRewrite: {'^/api' : ''}
+            }
+        }
+    },
     optimization: {
         minimize: false,
-        minimizer: [
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    warnings: false,
-                    parse: {},
-                    compress: {},
-                    mangle: false, // Note `mangle.properties` is `false` by default.
-                    output: null,
-                    toplevel: false,
-                    nameCache: null,
-                    ie8: false,
-                    keep_fnames: false,
-                }
-            })
-        ],
         splitChunks: {
             cacheGroups: {
                 'vendor': {
                     name: 'vendor',
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'initial',
+                    enforce:true,
                     priority: 1
                 },
             }
@@ -52,12 +58,6 @@ var config = {
     output: {
         path: path.resolve(__dirname,'..','.dist'),
         filename: 'js/[name].js'
-    },
-    devServer: {
-        hot: true,
-        watchOptions: {
-            poll: true
-        }
     },
     module: {
         rules: [
@@ -93,6 +93,8 @@ var config = {
         new CleanWebpackPlugin(['.dist'], {
             root: path.join(__dirname, '..')
         }),
+
+        new webpack.HotModuleReplacementPlugin(),
         new VueLoaderPlugin(),
         new CopyWebpackPlugin([{
             from: resolve('frontend/assets/'),
@@ -106,6 +108,7 @@ var config = {
         new webpack.DefinePlugin({
             CONFIG: JSON.stringify(require("../frontend/config/config.development")),
         })
+
     ]
 
 };

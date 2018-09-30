@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     api:{
         //Port to listen
-        port : 8080,
+        port : 8081,
         //if set to true use helmet to protect the API, not useful in dev
         secure : false,
         //Not recommended, will allow you to test without https.
@@ -13,7 +13,7 @@ module.exports = {
         allowHttp : false,
         //Should we give access to static assets ?
         static : {
-            host : true,
+            host : false,
             //if you want your own path for static assets.
             path : path.join(__dirname, '../..', '/.dist/'),
         },

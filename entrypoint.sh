@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-node index.js &
+npm run dev &
 nodemon backend/index.js
 
