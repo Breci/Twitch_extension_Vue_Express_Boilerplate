@@ -90,6 +90,7 @@ if (!config.api.useAWSLambda) {
     catch (e) {
         console.error("Can\'t start https server. This might be caused by missing SSL files.");
         console.error("See documentation to see how to generate SSL certificates");
+        process.exit(1);
     }
 }
 //With AWS lambda we do not need to listen since the aws library handle it

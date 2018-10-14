@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     api:{
         //Port to listen
-        port : 8081,
+        port : 8080,
         //if set to true use helmet to protect the API, not useful in dev
         secure : false,
 

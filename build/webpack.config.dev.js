@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require("webpack");
 const path = require('path');
 
@@ -21,6 +20,7 @@ var config = {
         ignored: [/node_modules/,'/backend/','/build/','/certs/','/.dist/','/dist/',"/generator/"]
     },
     devServer: {
+        stats: 'minimal',
         port: 8080,
         host: '0.0.0.0',
         index: '',
@@ -34,7 +34,7 @@ var config = {
         },
         proxy: {
             '/api': {
-                target: 'https://localhost:8081',
+                target: 'https://backend:8080',
                 secure: false,
                 pathRewrite: {'^/api' : ''}
             }
