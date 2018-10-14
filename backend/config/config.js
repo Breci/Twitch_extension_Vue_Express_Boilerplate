@@ -11,15 +11,6 @@ if (!config.api.useAWSLambda){
     if(!config.api.port){
         config.api.port = DEFAULT_API_PORT
     }
-    if(!config.api.static){
-        config.api.ssl = {
-            host : true,
-            path : path.join(__dirname, '../..', '/.dist/'),
-        }
-    }
-    if(!config.api.static.path){
-        config.api.static.path = path.join(__dirname, '../..', '/.dist/')
-    }
     if(!config.api.ssl){
         config.api.ssl = {
             certPath:path.join(__dirname, '../../', '/certs/testing.crt'),
@@ -36,15 +27,15 @@ if (!config.api.useAWSLambda){
 
 if (!config.extension){
     config.extension ={
-        secret:"",
-        clientId:""
+        secret:process.env.EXTENSION_SECRET || "",
+        clientId:process.env.EXTENSION_CLIENT_ID || ""
     };
 }
 
 if (!config.extension.secret){
-    config.extension.secret = process.env.EXTENSION_SECRET;
+    config.extension.secret = process.env.EXTENSION_SECRET || "";
 }
 if (!config.extension.clientId){
-    config.extension.secret = process.env.EXTENSION_CLIENT_ID;
+    config.extension.secret = process.env.EXTENSION_CLIENT_ID || "";
 }
 module.exports = config;

@@ -6,7 +6,7 @@ services:
             - .:/boilerplate
 
             # necessary to prevent OS X node_modules being loaded in:
-            - /boilerplate/node_modules
+            - /node_modules
 
         build:
             context: ./
