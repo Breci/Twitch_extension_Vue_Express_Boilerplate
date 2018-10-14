@@ -11,7 +11,6 @@ const ExtensionAPI = require('./API/ExtensionAPI');
 
 const AUTH_REGEX = /^Bearer (.+)$/;
 
-console.log(config.extension.secret)
 const SECRET = Buffer.from(config.extension.secret, 'base64');
 
 const app = express();

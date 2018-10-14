@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MinifyPlugin = require("babel-minify-webpack-plugin");
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const webpack = require("webpack");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
