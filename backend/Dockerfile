@@ -1,4 +1,4 @@
-FROM node:6.9.0
+FROM node:8.12.0
 
 MAINTAINER Brice Culas, Breci
 
