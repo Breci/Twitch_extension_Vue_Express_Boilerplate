@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-nodemon backend/index.js
+nodemon --watch backend backend/index.js
 
