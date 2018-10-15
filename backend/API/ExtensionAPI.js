@@ -7,7 +7,7 @@ class ExtensionAPI {
 
     setUpApi() {
 
-        this.app.get('/ping', function (req, res) {
+        this.app.get('/', function (req, res) {
             res.send("Hello world!");
         }.bind(this));
 
