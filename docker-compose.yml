@@ -3,20 +3,22 @@ version: '2'
 services:
     backend:
         volumes:
-            - .:/backend/
+            - ./backend:/backend/
+            - ./certs:/certs
 
             # necessary to prevent OS X node_modules being loaded in:
-            - /backend/node_modules
+            - /node_modules
 
         build:
             context: ./
             dockerfile: ./backend/Dockerfile
     frontend:
         volumes:
-            - .:/frontend
+            - ./frontend:/frontend
+            - ./certs:/certs
 
             # necessary to prevent OS X node_modules being loaded in:
-            - /frontend/node_modules
+            - /node_modules
 
         build:
             context: ./
