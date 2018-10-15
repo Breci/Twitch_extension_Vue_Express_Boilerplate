@@ -1,5 +1,5 @@
 module.exports = {
-    server:{
+    api:{
         useAWSLambda: true, //if set to true, will disable the app listening and let aws lambda do it.
         secure: true
     },
