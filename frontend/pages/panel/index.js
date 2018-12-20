@@ -1,11 +1,11 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueRessource from 'vue-resource'
 import App from './components/App.vue'
+import axios from 'axios'
 
 Vue.config.productionTip = false;
-Vue.use(VueRessource);
+Vue.prototype.$http = axios;
 
 /* eslint-disable no-new */
 var vue = new Vue({
@@ -15,18 +15,7 @@ var vue = new Vue({
 
 if (window.Twitch.ext) {
     window.Twitch.ext.onAuthorized((auth) => {
-        var app = vue.$children[0];
-        Vue.http.headers.common['Authorization'] = `Bearer ${auth.token}`
-        app.init(auth,CONFIG);
-    });
-
-
-    window.Twitch.ext.onContext(function (context, contextFields) {
-        console.log(context);
-        console.log(contextFields)
-    });
-
-    window.Twitch.ext.onError(function (err) {
-        console.error(err)
+        //Always include bearer token to the back-end by default
+        axios.defaults.headers.common['Authorization'] = `Bearer ${auth.token}`;
     });
 }

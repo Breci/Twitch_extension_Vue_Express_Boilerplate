@@ -1,6 +1,6 @@
 {
-  "name" : "panel",
-  "entryPoint" : "index.js",
-  "type" : "VueJS",
-  "template" : null
+  "name": "panel",
+  "entryPoint": "index.js",
+  "type": "VueJS",
+  "template": "./frontend/templates/default.html"
 }

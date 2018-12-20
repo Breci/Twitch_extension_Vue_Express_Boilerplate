@@ -1,47 +1,44 @@
 <template>
-  <div>
-    {{message}}
-  </div>
+    <div>
+        {{message}}
+    </div>
 </template>
 
 <script>
 
-export default {
-  ref: 'test',
-  name: 'Panel',
-  data () {
-    return {
-        message :"Hello world",
-        jwt : null,
-        config : null,
+    export default {
+        name: 'panel',
+        data() {
+            return {
+                message: "Hello world",
+                jwt: null,
+                config: null
+            }
+        },
+        methods: {
+            init: function (auth, config) {
+                this.jwt = auth;
+                this.config = config;
+            }
+        },
+        mounted() {
+
+            window.Twitch.ext.onAuthorized(function (auth) {
+                this.init(auth, CONFIG)
+            }.bind(this));
+
+            window.Twitch.ext.onContext(function (context, contextFields) {
+                //for context
+            });
+
+            window.Twitch.ext.configuration.onChanged(function () {
+                //handle configuration
+            });
+        }
     }
-  },
-  methods: {
-      init: function (auth,config) {
-          this.jwt = auth;
-          this.config = config;
-      },
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    h1, h2 {
-        font-weight: normal;
-    }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 20px;
-    }
-
-    a {
-        color: #42b983;
-    }
 </style>

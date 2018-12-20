@@ -1,27 +1,41 @@
 <template>
-  <div>
-    {{message}}
-  </div>
+    <div>
+        {{message}}
+    </div>
 </template>
 
 <script>
 
-export default {
-  name: '%name%',
-  data () {
-    return {
-        message :"Hello world",
-        jwt : null,
-        config : null
+    export default {
+        name: '%name%',
+        data() {
+            return {
+                message: "Hello world",
+                jwt: null,
+                config: null
+            }
+        },
+        methods: {
+            init: function (auth, config) {
+                this.jwt = auth;
+                this.config = config;
+            }
+        },
+        mounted() {
+
+            window.Twitch.ext.onAuthorized(function (auth) {
+                this.init(auth, CONFIG)
+            }.bind(this));
+
+            window.Twitch.ext.onContext(function (context, contextFields) {
+                //for context
+            });
+
+            window.Twitch.ext.configuration.onChanged(function () {
+                //handle configuration
+            });
+        }
     }
-  },
-  methods: {
-      init: function (auth,config) {
-          this.jwt = auth;
-          this.config = config;
-      },
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
