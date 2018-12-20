@@ -12,19 +12,17 @@
             return {
                 message: "Hello world",
                 jwt: null,
-                config: null
             }
         },
         methods: {
-            init: function (auth, config) {
+            init: function (auth) {
                 this.jwt = auth;
-                this.config = config;
             }
         },
         mounted() {
 
             window.Twitch.ext.onAuthorized(function (auth) {
-                this.init(auth, CONFIG)
+                this.init(auth)
             }.bind(this));
 
             window.Twitch.ext.onContext(function (context, contextFields) {
