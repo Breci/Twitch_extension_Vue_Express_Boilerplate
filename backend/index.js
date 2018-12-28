@@ -28,6 +28,21 @@ function configServer() {
     }
 }
 
+app.use((req, res, next) => {
+    if (!!req.headers['x-apigateway-event']) { //detection if api gateway is used or not
+        const event = JSON.parse(decodeURIComponent(req.headers['x-apigateway-event']));
+
+        if (event && event.pathParameters && event.pathParameters.proxy) {
+            let basePath = req.path.replace(event.pathParameters.proxy,'');
+            req.path = '/' + req.path.replace(basePath,'');
+            req.url = '/' + req.url.replace(basePath,'');
+        }
+    }
+    next()
+
+});
+
+
 /** INITIALISATION OF THE WEB SERVER **/
 app.use((req, res, next) => {
     console.log('Got request', req.path, req.method);
